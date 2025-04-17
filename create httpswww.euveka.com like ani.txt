@@ -1,0 +1,2 @@
+create https://www.euveka.com/ like animaton on website using minionfall img/video 
+ADD push img/video for the slide motion

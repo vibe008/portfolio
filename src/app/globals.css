@@ -1,0 +1,117 @@
+@import "tailwindcss";
+@font-face {
+  font-family: "MigraItalic";
+  src: url("/fonts/MigraItalic-ExtraboldItalic.woff2") format("woff2");
+  /* src: url("/fonts/._MigraItalic-ExtraboldItalic.woff2") format("woff2"); */
+  font-weight: 500;
+  font-display: swap;
+}
+:root {
+  --background: #ec0707;
+  --foreground: #0fd6e1;
+  --font-luckiest: "Luckiest Guy", cursive;
+  --font-fredoka: "Fredoka";
+  --font-migra: "Migra ,sans-serif";
+  --font-bebas: "Bebas Neue ,sans-serif";
+  --font-anton: "Anton" ,"sans-serif";
+  --font-league: "League_Gothic" ,"sans-serif";
+  --font-cormorant: "Cormorant_Garamond" ,"sans-serif";
+}
+
+@theme {
+  --color-background: #0be437;
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+.heading {
+  font-family: "Migra";
+  font-size: 1.2rem;
+  color: rgb(0, 0, 0);
+}
+.nav-name {
+  font-family: "Luckiest_Guy", cursive;
+  color: black;
+}
+.projectHeadline {
+  font-family: "Luckiest_Guy", cursive;
+  font-size: 2rem;
+}
+.projectMainHeading {
+  font-family:"Anton" ,"sans-serif";
+}
+.contactheadline {
+  font-family:"Fredoka";
+  color: rgb(252, 251, 251);
+
+}
+.about-para{
+  font-family: "Fredoka";
+  color: black;
+}
+.intro {
+  font-family:"Anton" ,"sans-serif";
+  color: black;
+}
+.introEx {
+  font-family:"Cormorant_Garamond" ,"sans-serif";
+  font-size: 30px;
+}
+.workdescription {
+  font-family:"Fredoka";
+
+}
+.workdates {
+  font-family:"Fredoka";
+  font-size: 1.2rem;
+}
+.projectview {
+  font-family:"Cormorant_Garamond" ,"sans-serif";
+}
+.inputtrext{
+  /* height: 50px; */
+  width: 45%;
+  border-bottom: 1px solid rgb(255, 238, 0);
+  font-family:"Fredoka";
+  outline: none;
+  color: white;
+  font-size: 20px;
+  /* border: 1px solid red; */
+}
+.textarea{
+  /* height: 50px; */
+  width: 100%;
+  border-bottom: 1px solid  rgb(255, 238, 0);
+  outline: none;
+  color: white;
+  font-size: 20px;
+  /* border: 1px solid red; */
+}
+.constactdetail{
+  font-family:"Fredoka";
+  font-size: 1.2rem;
+}
+.nav-profile {
+  font-family: "Bebas Neue", "sans-serif";
+  color: black;
+  text-transform: none;
+  font-weight: bold;
+}
+.bg-skin-background {
+  background: linear-gradient(135deg, #f9d423, #ffeb3b, #b0b9c0);
+}
+.backgroundImage {
+  background: linear-gradient(180deg, #f9d423, #ffeb3b, #e5ecf3);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  /* background: var(--background); */
+  /* color: var(--foreground); */
+  font-family: Arial, Helvetica, sans-serif;
+}
