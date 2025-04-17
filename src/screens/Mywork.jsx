@@ -293,22 +293,7 @@ const MyWork = forwardRef((props, ref) => {
           </div>
         </div>
       </div>
-             <div
-          onClick={() => props.goToSection(props.currentSection + 1)}
-          className=" w-10 h-20 rounded-full border-4 border-yellow-200 flex sm:flex md:flex lg:hidden justify-center z-[10] absolute bottom-5 left-[50%] items-center cursor-pointer  "
-        >
-            <motion.div
-              className="w-4 h-4 rounded-full bg-gradient-to-r from-indigo-400 to-yellow-50 absolute bottom-0 "
-              animate={{
-                y: [0, -25, 0], 
-              }}
-              transition={{
-                duration: 1.5,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-            />
-        </div>
+     
     </div>
     <div className="h-screen bg-gradient-to-b from-yellow-300 to-indigo-500"></div>
    </div>
