@@ -3,12 +3,10 @@ import { useEffect, useState, useRef } from "react";
 import Home from "../screens/Home";
 import About from "../screens/About";
 import MyWork from "../screens/Mywork";
-import ProjectView from "../screens/ProjectView";
 import Contact from "../screens/Contact";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import MinionwithTorch from "../../public/MinionsImg/minionfall.jpg";
-import Navbar from "../components/Navbar";
 export default function App() {
   const sectionsRef = useRef<(HTMLDivElement | null)[]>([]);
   const myWorkRef = useRef<{ isAtStart: boolean; isAtEnd: boolean }>({
@@ -16,9 +14,9 @@ export default function App() {
     isAtEnd: false,
   });
 
-  const [currentSection, setCurrentSection] = useState(0);
-  const [animateOut, setAnimateOut] = useState(false);
-  const isScrolling = useRef(false);
+  const [currentSection, setCurrentSection] = useState<number>(0);
+  const [animateOut, setAnimateOut] = useState<boolean>(false);
+  const isScrolling = useRef<boolean>(false);
 
   const scrollToSection = (index: number) => {
     const section = sectionsRef.current[index];
@@ -56,7 +54,7 @@ export default function App() {
 
   useEffect(() => {
     const handleWheel = (e: WheelEvent) => {
-      console.log("e",e.clientY)
+      console.log("e",e)
       if (isScrolling.current) return;
 
       let next = currentSection;
@@ -125,6 +123,7 @@ export default function App() {
 
   return (
     <div className="h-screen w-screen overflow-hidden relative">
+      {/* <Navbar goToSection={goToSection}/> */}
       <div
         ref={(el) => {
           sectionsRef.current[0] = el;
@@ -154,8 +153,23 @@ export default function App() {
         }}
         className="h-[200vh] w-full relative"
       >
-        <MyWork ref={myWorkRef} goToSection={goToSection} currentSection={currentSection} />
-
+        <MyWork ref={myWorkRef} />
+        <div
+          onClick={() => goToSection(currentSection + 1)}
+          className=" w-10 h-20 rounded-full border-4 border-yellow-200 flex sm:flex md:flex lg:hidden justify-center z-[10] absolute bottom-5 left-[50%] items-center cursor-pointer  "
+        >
+            <motion.div
+              className="w-4 h-4 rounded-full bg-gradient-to-r from-indigo-400 to-yellow-50 absolute bottom-0 "
+              animate={{
+                y: [0, -25, 0], 
+              }}
+              transition={{
+                duration: 1.5,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            />
+        </div>
       </div>
 
       <div
