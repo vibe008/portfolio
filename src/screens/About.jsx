@@ -2,7 +2,7 @@
 import FullScreenSection from "../components/FullScreenSection";
 export default function About() {
   return (
-    <div className=" h-full flex justify-center items-center" id="About" >
+    <div className=" h-full flex justify-center items-center z-[-10]" id="About" >
       <div className="w-[90%] m-auto  flex justify-center items-center ">
         <div className="">
           <div className="w-[90%] m-auto">

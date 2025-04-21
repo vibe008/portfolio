@@ -62,6 +62,7 @@ const MyWork = forwardRef((props, ref) => {
   const [atEnd, setAtEnd] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [slideWidth, setSlideWidth] = useState(0);
+  const [isAutoPlay, setIsAutoPlay] = useState(true);
   const totalSlides = CardData.length;
 
   useImperativeHandle(ref, () => ({
@@ -83,12 +84,37 @@ const MyWork = forwardRef((props, ref) => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  useEffect(() => {
+    if (!isAutoPlay) return;
+  
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => {
+        // Check if we are at the last slide
+        if (prevIndex === totalSlides - 1) {
+          clearInterval(interval); // Stop auto-play at the last slide
+          return prevIndex; // Stay at the last slide
+        }
+        
+        const nextIndex = prevIndex + 1; // Move to the next slide
+        scrollToSlide(nextIndex);
+        setAtStart(nextIndex === 0);
+        setAtEnd(nextIndex === totalSlides - 1);
+        
+        return nextIndex;
+      });
+    }, 4000);
+  
+    return () => clearInterval(interval);
+  }, [isAutoPlay, slideWidth]);
+  
+  
   const scrollToSlide = (index) => {
     const targetX = -index * slideWidth;
     animate(x, targetX, { type: "spring", stiffness: 200, damping: 30 });
   };
 
   const handleWheel = (e) => {
+    setIsAutoPlay(false);
     if (e.deltaY > 20 && currentIndex < totalSlides - 1) {
       const nextIndex = currentIndex + 1;
       setCurrentIndex(nextIndex);
@@ -115,6 +141,7 @@ const MyWork = forwardRef((props, ref) => {
   };
 
   const goToPrevSlide = () => {
+    
     if (currentIndex > 0) {
       const prevIndex = currentIndex - 1;
       setCurrentIndex(prevIndex);
@@ -129,6 +156,7 @@ const MyWork = forwardRef((props, ref) => {
     setAtEnd(currentIndex === totalSlides - 1);
   }
   const handleDragEnd = (_, info) => {
+    // setIsAutoPlay(false);
     const offset = info.offset.x;
     const velocity = info.velocity.x;
 
@@ -157,7 +185,8 @@ const MyWork = forwardRef((props, ref) => {
   };
 
   return (
-   <div>
+ <>
+    <div>
         <div className="relative" id="Works">
       {/* <div className="absolute inset-0 bg-white z-0" /> */}
 
@@ -297,6 +326,7 @@ const MyWork = forwardRef((props, ref) => {
     </div>
     <div className="h-screen bg-gradient-to-b from-yellow-300 to-indigo-500"></div>
    </div>
+ </>
   );
 });
 export default MyWork;
