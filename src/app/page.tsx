@@ -139,7 +139,6 @@ export default function App() {
         disableOverlayClick
         disableCloseOnEsc
         outerContainerId={"outer-container"}
-        elastic
       >
         <div className="bg-white h-full flex items-center justify-center ">
           <div
